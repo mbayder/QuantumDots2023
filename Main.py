@@ -63,7 +63,7 @@ class App(customtkinter.CTk):
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
 
 
-        tiny_image = Image.open("Logo.png")
+        tiny_image = Image.open("images/Logo.png")
         tiny_image = tiny_image.resize((55, 55))
         tiny_photo_image = ImageTk.PhotoImage(tiny_image)
         self.tiny_image_label = customtkinter.CTkLabel(self.sidebar_frame, image=tiny_photo_image, width=10, height=10, text="")
@@ -134,12 +134,12 @@ class App(customtkinter.CTk):
         # Side buttons
 
         #Define images
-        CdS = ImageTk.PhotoImage(Image.open("CdS.png").resize((100,100),))
-        CdSe = ImageTk.PhotoImage(Image.open("CdSe.png").resize((100,100),))
-        GaAs = ImageTk.PhotoImage(Image.open("GaAs.png").resize((100,100),))
-        Ge = ImageTk.PhotoImage(Image.open("Ge.png").resize((100,100),))
-        InAs = ImageTk.PhotoImage(Image.open("InAs.png").resize((100,100),))
-        Si = ImageTk.PhotoImage(Image.open("Si.png").resize((100, 100), ))
+        CdS = ImageTk.PhotoImage(Image.open("images/CdS.png").resize((100,100),))
+        CdSe = ImageTk.PhotoImage(Image.open("images/CdSe.png").resize((100,100),))
+        GaAs = ImageTk.PhotoImage(Image.open("images/GaAs.png").resize((100,100),))
+        Ge = ImageTk.PhotoImage(Image.open("images/Ge.png").resize((100,100),))
+        InAs = ImageTk.PhotoImage(Image.open("images/InAs.png").resize((100,100),))
+        Si = ImageTk.PhotoImage(Image.open("images/Si.png").resize((100, 100), ))
         self.sidebar_button_CdS = customtkinter.CTkButton(self.sidebar_frame,
                                                              text="",
                                                              command=self.set_material_CdS,
@@ -363,26 +363,26 @@ class App(customtkinter.CTk):
         # Create frames for each page
         self.page1 = customtkinter.CTkFrame(self, fg_color="#000000")
         self.page2 = customtkinter.CTkFrame(self, fg_color="#000000")
-        image = Image.open("dot.png")  # Change "dot.jpg" to the actual image file path
+        image = Image.open("images/dot.png")  # Change "dot.jpg" to the actual image file path
         image = image.convert("RGBA")
         r2 = 255
         g2 = 255
         b2 = 255
         color = (r2, g2, b2, 255)
-        brus = ImageTk.PhotoImage(Image.open("Brus Eqn.png").resize((600, 100)))
+        brus = ImageTk.PhotoImage(Image.open("images/Brus Eqn.png").resize((600, 100)))
         formula = customtkinter.CTkLabel(self.page2, text="", image=brus)
         formula.place(x=300, y=550)
-        equal = ImageTk.PhotoImage(Image.open("equal sign.png").resize((20, 20)))
+        equal = ImageTk.PhotoImage(Image.open("images/equal sign.png").resize((20, 20)))
         sign = customtkinter.CTkLabel(self.page2, text="", image=equal)
         sign.place(x=600, y=700)
         bond_e = customtkinter.CTkLabel(self.page2, textvariable=self.energy_var)
         custom_font = customtkinter.CTkFont(size=60, weight="bold")
         bond_e.configure(font=custom_font)
         bond_e.place(x=400, y=770)
-        Wavelength = ImageTk.PhotoImage(Image.open("_Wavelength_.png").resize((300, 100)))
+        Wavelength = ImageTk.PhotoImage(Image.open("images/_Wavelength_.png").resize((300, 100)))
         WavelengthTitle = customtkinter.CTkLabel(self.page1, text="", image=Wavelength)
         WavelengthTitle.place(x=800,y=80, anchor="center")
-        Wavelength = ImageTk.PhotoImage(Image.open("Wavelength-Equation.png").resize((220, 100)))
+        Wavelength = ImageTk.PhotoImage(Image.open("images/Wavelength-Equation.png").resize((220, 100)))
         WavelengthTitle = customtkinter.CTkLabel(self.page1, text="", image=Wavelength)
         WavelengthTitle.place(x=700, y=200, anchor="center")
         self.WaveR = customtkinter.CTkLabel(self.page1, text="", textvariable=self.wave, text_color="#ffffff",
@@ -391,10 +391,10 @@ class App(customtkinter.CTk):
         self.ColourWord = customtkinter.CTkLabel(self.page1, textvariable=self.colour,text_color=self.hexcolour,
                                        font=customtkinter.CTkFont(size=40, weight="bold"))
         self.ColourWord.place(x=800, y=300, anchor="center")
-        Plank = ImageTk.PhotoImage(Image.open("_h- Plank Constant_.png").resize((300, 40)))
+        Plank = ImageTk.PhotoImage(Image.open("images/_h- Plank Constant_.png").resize((300, 40)))
         PlankTitle = customtkinter.CTkLabel(self.page1, text="", image=Plank)
         PlankTitle.place(x=800, y=370, anchor="center")
-        C = ImageTk.PhotoImage(Image.open("c- speed of light.png").resize((300, 45)))
+        C = ImageTk.PhotoImage(Image.open("images/c- speed of light.png").resize((300, 45)))
         CT = customtkinter.CTkLabel(self.page1, text="", image=C)
         CT.place(x=800, y=450, anchor="center")
 
@@ -409,7 +409,7 @@ class App(customtkinter.CTk):
                 if r != 0 or g != 0 or b != 0:  # Check if the pixel is white
                     image.putpixel((x, y), color)
 
-        image.save("dot.png")
+        image.save("images/dot.png")
         self.flask_photo_image = ImageTk.PhotoImage(image)
 
         self.image_label = customtkinter.CTkLabel(self.page1, image=self.flask_photo_image, text='')
@@ -441,8 +441,8 @@ class App(customtkinter.CTk):
 
     def add_switch_for_light(self):
 
-        flash_image = Image.open("flash.png").resize((150, 300), Image.Resampling.LANCZOS)
-        light_image = Image.open("light.png").resize((150, 300), Image.Resampling.LANCZOS)
+        flash_image = Image.open("images/flash.png").resize((150, 300), Image.Resampling.LANCZOS)
+        light_image = Image.open("images/light.png").resize((150, 300), Image.Resampling.LANCZOS)
         switch_var = customtkinter.StringVar(value="off")
 
         flash_ctk_image = ImageTk.PhotoImage(image=flash_image)
@@ -676,7 +676,7 @@ class App(customtkinter.CTk):
 
 
     def set_flask_white(self):
-        image_path = "dot.png"  # Updated path to the uploaded image
+        image_path = "images/dot.png"  # Updated path to the uploaded image
         image = Image.open(image_path)  # Change "dot.jpg" to the actual image file path
         image = image.convert("RGBA")
         data = np.array(image)
@@ -924,7 +924,7 @@ class App(customtkinter.CTk):
             self.Labal.configure(text_color=self.hexcolour)
 
             # Now we directly create a PhotoImage from the altered image data
-            image_path = "dot.png"  # Updated path to the uploaded image
+            image_path = "images/dot.png"  # Updated path to the uploaded image
             image = Image.open(image_path)  # Change "dot.jpg" to the actual image file path
             image = image.convert("RGBA")
             data = np.array(image)
