@@ -15,7 +15,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 #Defining theme
 customtkinter.set_default_color_theme("dark-blue")
 model2 = keras.models.load_model('Network')
-#boilerplantecode
+
 
 
 
@@ -63,8 +63,8 @@ class App(customtkinter.CTk):
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
 
 
-        tiny_image = Image.open("Logo.png")  # Make sure the image is in the same directory or provide the full path
-        tiny_image = tiny_image.resize((55, 55))  # Resize it to be small (20x20 pixels for example)
+        tiny_image = Image.open("Logo.png")
+        tiny_image = tiny_image.resize((55, 55))
         tiny_photo_image = ImageTk.PhotoImage(tiny_image)
         self.tiny_image_label = customtkinter.CTkLabel(self.sidebar_frame, image=tiny_photo_image, width=10, height=10, text="")
         self.tiny_image_label.image = tiny_photo_image
@@ -76,9 +76,9 @@ class App(customtkinter.CTk):
                                                         fg_color="#383735",
                                                         hover_color="gray",
                                                         font=customtkinter.CTkFont(size=25, weight="bold"),
-                                                        width=250,  # Set the width as desired
-                                                        height=50)  # Set the height as desired
-        self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10, sticky="ew")  # Fill the width of the grid colum
+                                                        width=250,
+                                                        height=50)
+        self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10, sticky="ew")
 
         self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame,
                                                         text= "QD Energy Diagram",
@@ -86,9 +86,9 @@ class App(customtkinter.CTk):
                                                         fg_color="#383735",
                                                         font=customtkinter.CTkFont(size=25, weight="bold"),
                                                         hover_color="gray",
-                                                        width=250,  # Set the width as desired
+                                                        width=250,
                                                         height=50)
-        self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10, sticky="ew")  # Fill the width of the grid column
+        self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10, sticky="ew")
         self.search_entry = customtkinter.CTkEntry(self.sidebar_frame,
 
                                                    placeholder_text="Enter your compound...",
@@ -121,7 +121,7 @@ class App(customtkinter.CTk):
                                               orientation="vertical",
                                               width=28,
                                               height=500)
-        self.slider.grid(row=5, column=0, pady=(0,75), padx=(0,160), sticky="ns")  # Center the slider in the column
+        self.slider.grid(row=5, column=0, pady=(0,75), padx=(0,160), sticky="ns")
         self.slider_label_bottom = customtkinter.CTkLabel(self.sidebar_frame,
                                                           textvariable=self.slider_value_display,
                                                           fg_color="transparent",
@@ -147,7 +147,7 @@ class App(customtkinter.CTk):
                                                              hover_color="gray",
                                                              image=CdS,
                                                              compound = 'bottom',
-                                                             width=150,  # Set the width as desired
+                                                             width=150,
                                                              height=30)
 
         self.sidebar_button_CdS.grid(row=5, column=0, padx=(110,0), sticky="nw")
@@ -158,7 +158,7 @@ class App(customtkinter.CTk):
                                                              hover_color="gray",
                                                              image=CdSe,
                                                              compound='bottom',
-                                                             width=150,  # Set the width as desired
+                                                             width=150,
                                                              height=30)
 
         self.sidebar_button_CdSe.grid(row=5, column=0, padx=(110, 0), pady=(120, 0), sticky="nw")
@@ -169,7 +169,7 @@ class App(customtkinter.CTk):
                                                              hover_color="gray",
                                                              image=GaAs,
                                                              compound='bottom',
-                                                             width=150,  # Set the width as desired
+                                                             width=150,
                                                              height=30)
         self.sidebar_button_GaAs.grid(row=5, column=0, padx=(110, 0), pady=(240, 0), sticky="nw")
         self.sidebar_button_Ge = customtkinter.CTkButton(self.sidebar_frame,
@@ -179,7 +179,7 @@ class App(customtkinter.CTk):
                                                              hover_color="gray",
                                                              image=Ge,
                                                              compound='bottom',
-                                                             width=150,  # Set the width as desired
+                                                             width=150,
                                                              height=30)
         self.sidebar_button_Ge.grid(row=5, column=0, padx=(110, 0), pady=(360, 0), sticky="nw")
         self.sidebar_button_InAs = customtkinter.CTkButton(self.sidebar_frame,
@@ -189,22 +189,21 @@ class App(customtkinter.CTk):
                                                              hover_color="gray",
                                                              image=InAs,
                                                              compound='bottom',
-                                                             width=150,  # Set the width as desired
+                                                             width=150,
                                                              height=30)
         self.sidebar_button_InAs.grid(row=5, column=0, padx=(110, 0), pady=(480, 0), sticky="nw")
 
     def slider_event(self, value):
-        rounded_value = round(float(value), 3)  # round to 3 decimal places
+        rounded_value = round(float(value), 3)
         self.slider_value.set(rounded_value)
         self.atomic_radius = rounded_value
         self.slider_value_display.set(f"{rounded_value} nm")
         self.update_energy_label()
 
     def search_event(self):
-        # Get the string from the search entry widge
         self.active_button = None
         self.from_search_event = True
-        self.reset_sidebar_button_colors()  # Add this line to reset the colors
+        self.reset_sidebar_button_colors()
         self.slider_value_changed()
 
     def update_energy_label(self):
@@ -213,11 +212,10 @@ class App(customtkinter.CTk):
         self.energy_var.set(f"{energy}J")
 
     def reset_sidebar_button_colors(self):
-        # List all your sidebar buttons here and set their default color
         buttons = [self.sidebar_button_1, self.sidebar_button_2, self.sidebar_button_CdS, self.sidebar_button_CdSe,
                    self.sidebar_button_GaAs, self.sidebar_button_Ge, self.sidebar_button_InAs]
         for button in buttons:
-            button.configure(fg_color="#383735")  # Replace with your default color
+            button.configure(fg_color="#383735")
 
 
 
@@ -228,9 +226,9 @@ class App(customtkinter.CTk):
         button.configure(fg_color=color)
 
     def dot_energy_general(self, material, inf_array, r):
-        E_bg = inf_array[0][2]  # eV
-        me_m0 = inf_array[0][1]  # relative - no units
-        mh_m0 = inf_array[0][0]  # relative - no units
+        E_bg = inf_array[0][2]
+        me_m0 = inf_array[0][1]
+        mh_m0 = inf_array[0][0]
 
         if material == "CdS":
             E_bg = 2.42
@@ -414,17 +412,15 @@ class App(customtkinter.CTk):
         image.save("dot.png")
         self.flask_photo_image = ImageTk.PhotoImage(image)
 
-        # Use the PhotoImage object to create the label
         self.image_label = customtkinter.CTkLabel(self.page1, image=self.flask_photo_image, text='')
 
-        # Store a reference to avoid garbage collection
         self.image_label.pack(anchor='w')
         self.Labal = customtkinter.CTkLabel(self.page1, text="", textvariable=self.material_name, text_color=self.hexcolour,
                                        font=customtkinter.CTkFont(size=30, weight="bold"))
         self.Labal.place(x=232, y=44, anchor="center")
 
 
-        #image 2
+        #Old code, no longer in use.
         '''image = Image.open("flash.png").resize((150,300), Image.Resampling.LANCZOS)
         light = ImageTk.PhotoImage(image)
         image_label = customtkinter.CTkLabel(self.page1, image=light, text='')
@@ -439,11 +435,8 @@ class App(customtkinter.CTk):
 
     def handle_button_click(self, clicked_button):
         if self.active_button is not None:
-            # Reset the color of the previously active button
             self.active_button.configure(fg_color="#383735")  # Set this to your default button color
-        # Set the color of the clicked button
         clicked_button.configure(fg_color="gray")
-        # Update the reference to the currently active button
         self.active_button = clicked_button
 
     def add_switch_for_light(self):
@@ -454,8 +447,8 @@ class App(customtkinter.CTk):
 
         flash_ctk_image = ImageTk.PhotoImage(image=flash_image)
         light_ctk_image = ImageTk.PhotoImage(image=light_image)
-        flash = customtkinter.CTkLabel(self.page1, text="", image=flash_ctk_image)  # Use flash_ctk_image here
-        light = customtkinter.CTkLabel(self.page1, text="", image=light_ctk_image)  # Use light_ctk_image here
+        flash = customtkinter.CTkLabel(self.page1, text="", image=flash_ctk_image)
+        light = customtkinter.CTkLabel(self.page1, text="", image=light_ctk_image)
         flash.pack(anchor='sw', padx="144", pady=(0, 0))
         def switch_event():
             self.switch_state = switch_var.get()
@@ -469,7 +462,7 @@ class App(customtkinter.CTk):
 
                 flash.pack_forget()
 
-                self.update_flask_image()  # Call the method that updates the image based on the slider
+                self.update_flask_image()
 
             elif switch_var.get() == "off":
                 self.wave.set("NA")
@@ -481,7 +474,7 @@ class App(customtkinter.CTk):
 
                 light.pack_forget()
 
-                self.set_flask_white()  # Set the flask to white
+                self.set_flask_white()
 
 
         switch = customtkinter.CTkSwitch(self.page1, text="Red/UV Lightswitch", command=switch_event, variable=switch_var, onvalue="on",
@@ -966,4 +959,3 @@ if __name__ == "__main__":
     app.sidebar_button_2.configure(command=lambda: app.sidebar_button_event(2))
     app.add_switch_for_light()
     app.mainloop()
-
